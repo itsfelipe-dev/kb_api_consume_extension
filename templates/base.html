@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{{ url_for('static', path='/css/main.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', path='node_modules/star-rating.js/dist/star-rating.css') }}" rel="stylesheet">
+</head>
+
+
+<body oncontextmenu="return false;">
+    <div class="grid grid-cols-[60%_40%] h-screen  p-2 overflow-x-hidden ">
+
+        <!-- Invoice Section -->
+        <section class="flex flex-col bg-white shadow-lg rounded-2xl  overflow-y-auto ">
+
+            <!-- Header -->
+            <div class="rounded-t mb-0 px-4 py-3 border-b">
+                <div class="flex justify-between items-center">
+                    <h1 class="font-bold text-lg text-gray-700">
+                        <i class="fa-solid fa-receipt pr-1"></i> FACTURA
+                    </h1>
+                    <button
+                        class="bg-[#B1834A] text-white active:bg-amber-600 text-xs font-bold uppercase px-3 py-1 rounded transition-all duration-150">
+                        Kiaby
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Table -->
+            <table class="table-auto overflow-hidden divide-y divide-gray-200  text-left ">
+                <thead class=" text-white uppercase bg-[#B1834A] ">
+                    <tr>
+                        <th class="text-base pl-2 py-3 rounded-s-lg">Nombre Producto</th>
+                        <th class="text-base py-3">CNT</th>
+                        <th class="text-base py-3">Precio</th>
+                        <th class="text-base pr-2 py-3 rounded-e-lg">SUBTOTAL</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody" class="bg-white divide-y divide-gray-200">
+                    <!-- Example Row: Products will be populated here -->
+                    <tr>
+                        <!-- <th scope="row" class="font-semibold text-dark text-break">${item.productName}</th>
+                        <td class="text-body-secondary">${item.productQty}</td>
+                        <td class="text-body-secondary">${item.productPrice}</td>
+                        <td class="text-body-secondary">${item.productSubtotal}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Total Amount -->
+            <div class="mt-auto px-4 py-5 bg-[#B1834A]">
+                <div class="flex justify-between items-center text-xl">
+                    <h3 class="font-semibold text-xl text-white">TOTAL</h3>
+                    <div class="big-total font-bold text-white"></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Summary Section -->
+        <section class="card shadow-lg rounded-2xl p-5 flex  items-center flex-col bg_img">
+            <div class="thank-you text-lg mt-2"></div>
+
+            <img class="max-w-32" src="{{ url_for('static', path='/img/logo-kiaby.png') }}" alt="" srcset="">
+            <div class="flex flex-row justify-between mt-3">
+                <div class=" bg-[#270827]  p-4 rounded-2xl text-center">
+                    <h1 class="text-2xl text-white font-bold">QR Nequi</h1>
+                    <img class="size-40" src="{{ url_for('static', path='/img/QR/nequi.jpeg') }}" alt="" srcset="">
+                </div>
+                <div
+                    class="ml-4 bg-[#EC1C26] p-4 rounded-2xl text-white text-center flex flex-col justify-between items-center">
+                    <img class="size-20" src="{{ url_for('static', path='/img/QR/daviplata.png') }}" alt="" srcset="">
+                    <h1 class="text-2xl  font-bold ">Daviplata</h1>
+                    <h1 class="text-xl  font-semibold">321 215 1254</h1>
+                    <h1 class="text-base ">Andres Orjuela</h1>
+                </div>
+
+            </div>
+            <div class=" bg-white  p-4 rounded-2xl text-center mt-4 shadow-lg ">
+                <img class="w-60 " src="{{ url_for('static', path='/img/QR/acepted-payments.jpg') }}" alt="" srcset="">
+
+            </div>
+
+
+
+
+            <!-- <img class="max-w-32" src="{{ url_for('static', path='/img/QR/nequi.jpeg') }}" alt="" srcset=""> -->
+
+
+
+        </section>
+
+    </div>
+    <style>
+        .bg_img {
+            background-image: url("{{ url_for('static', path='/img/background.png') }}");
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+    <script src="https://kit.fontawesome.com/cac5544010.js" crossorigin="anonymous"></script>
+
+</body>
+
+<script src="{{ url_for('static', path='node_modules/star-rating.js/dist/star-rating.min.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ url_for('static', path='/js/display.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+
+</html>
