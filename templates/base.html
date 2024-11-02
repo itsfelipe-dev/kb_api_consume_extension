@@ -8,6 +8,8 @@
     <link href="{{ url_for('static', path='/css/main.css') }}" rel="stylesheet">
 
     <link href="{{ url_for('static', path='node_modules/star-rating.js/dist/star-rating.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='node_modules/@sweetalert2/theme-borderless/borderless.css') }}"
+        rel="stylesheet">
 </head>
 
 
@@ -24,7 +26,7 @@
                         <i class="fa-solid fa-receipt pr-1"></i> FACTURA
                     </h1>
                     <button
-                        class="bg-[#B1834A] text-white active:bg-amber-600 text-xs font-bold uppercase px-3 py-1 rounded transition-all duration-150">
+                        class="bg-[#b1834a] text-white active:bg-amber-600 text-xs font-bold uppercase px-3 py-1 rounded transition-all duration-150">
                         Kiaby
                     </button>
                 </div>
@@ -67,12 +69,12 @@
 
             <img class="max-w-32" src="{{ url_for('static', path='/img/logo-kiaby.png') }}" alt="" srcset="">
             <div class="flex flex-row justify-between mt-3">
-                <div class=" bg-[#270827]  p-4 rounded-2xl text-center">
+                <div class=" h-54 w-52 bg-[#310a31]  p-4 rounded-2xl flex flex-col justify-between items-center ">
                     <h1 class="text-2xl text-white font-bold">QR Nequi</h1>
                     <img class="size-40" src="{{ url_for('static', path='/img/QR/nequi.jpeg') }}" alt="" srcset="">
                 </div>
                 <div
-                    class="ml-4 bg-[#EC1C26] p-4 rounded-2xl text-white text-center flex flex-col justify-between items-center">
+                    class=" w-52 ml-4 bg-[#EC1C26] p-4 rounded-2xl text-white text-center flex flex-col justify-between items-center">
                     <img class="size-20" src="{{ url_for('static', path='/img/QR/daviplata.png') }}" alt="" srcset="">
                     <h1 class="text-2xl  font-bold ">Daviplata</h1>
                     <h1 class="text-xl  font-semibold">321 215 1254</h1>
@@ -80,21 +82,29 @@
                 </div>
 
             </div>
-            <div class=" bg-white  p-4 rounded-2xl text-center mt-4 shadow-lg ">
-                <img class="w-60 " src="{{ url_for('static', path='/img/QR/acepted-payments.jpg') }}" alt="" srcset="">
+            <div class="flex flex-row justify-between mt-3">
+                <div class="w-52 h-54 bg-white  p-4 rounded-2xl text-center mt-4 shadow-lg flex flex-col justify-between items-center ">
+                    <h1 class="text-2xl text-dark font-bold">Metodos de pago</h1>
+                    <img class="w-36 " src="{{ url_for('static', path='/img/QR/acepted-payments.png') }}" alt=""
+                        srcset="">
+                </div>
+                <div
+                    class="ml-4  w-52 h-54 bg-black rounded-2xl text-white text-center flex flex-col justify-between items-center  p-4">
+                    <img class="size-32" src="{{ url_for('static', path='/img/wifi_gratis.png') }}" alt="" srcset="">
+                    <h1 class="text-xl  font-bold ">WIFI GRATIS</h1>
+                    <h1 class="text-base  font-semibold">Red: Kiaby Clientes</h1>
+                </div>
 
             </div>
 
-
-
-
-            <!-- <img class="max-w-32" src="{{ url_for('static', path='/img/QR/nequi.jpeg') }}" alt="" srcset=""> -->
-
-
-
         </section>
 
+
+        <!-- slideshow -->
+
     </div>
+    <section class="slideshow"></section>
+
     <style>
         .bg_img {
             background-image: url("{{ url_for('static', path='/img/background.png') }}");
@@ -111,8 +121,12 @@
 
 <script src="{{ url_for('static', path='node_modules/star-rating.js/dist/star-rating.min.js') }}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="{{ url_for('static', path='node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+
+<script src="{{ url_for('static', path='/js/slideshow.js') }}"></script>
 <script src="{{ url_for('static', path='/js/display.js') }}"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 

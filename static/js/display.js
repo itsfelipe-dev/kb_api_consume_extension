@@ -1,26 +1,38 @@
-// Open a WebSocket connection
-
 const ws = new WebSocket("ws://127.0.0.1:8000/ws");
-
-
-ws.onopen = function () {
-    console.log("WebSocket connection established.");
-};
-
-
-
+let messageTimeout;
+let slideshowActive = false;
+let idleTimeSlideshow = 600000;
+// WebSocket message event
 ws.onmessage = function (event) {
     const data = JSON.parse(event.data);
 
     if (Object.hasOwn(data, "message")) {
+        orderPayed(data);
+    }
+    displayProductData(data);
 
-        orderPayed(data)
-    } else {
-        displayProductData(data);
+
+    // Reset to original state only if initializeSlideshow is active
+    if (slideshowActive) {
+        resetToOriginalState()
+        slideshowActive = false;
+        clearTimeout(messageTimeout);
     }
 
+    startMessageTimeout();
 
+
+    // Start or restart the timeout
 };
+
+function startMessageTimeout() {
+    clearTimeout(messageTimeout);
+    messageTimeout = setTimeout(() => {
+        initializeSlideshow();
+        slideshowActive = true;
+    }, idleTimeSlideshow);
+}
+
 
 function orderPayed(message) {
     Swal.fire({
@@ -59,7 +71,6 @@ function orderPayed(message) {
 
 
 };
-
 function formatNumber(input) {
     input = parseFloat(input);
     return input % 1 == 0 ? input : parseFloat(input).toFixed(1);
@@ -105,3 +116,5 @@ function displayProductData(data) {
 ws.onclose = function () {
     console.log("WebSocket connection closed");
 };
+
+startMessageTimeout();
