@@ -13,6 +13,7 @@ function initializeSlideshow() {
     { img: "/free_wifi.png" },
     { img: "/segundo_piso.png" },
     { img: "/tarjeta_regalo.png" },
+    { img: "/trabaja_con_nostros.png"}
   ];
 
   // Create slides dynamically
