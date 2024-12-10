@@ -33,64 +33,73 @@
             </div>
 
             <!-- Product Table -->
-            <table class="table-auto overflow-hidden divide-y divide-gray-200  text-left ">
-                <thead class=" text-white uppercase bg-[#B1834A] ">
-                    <tr>
-                        <th class="text-base pl-2 py-3 rounded-s-lg">Nombre Producto</th>
-                        <th class="text-base py-3">CNT</th>
-                        <th class="text-base py-3">Precio</th>
-                        <th class="text-base pr-2 py-3 rounded-e-lg">SUBTOTAL</th>
-                    </tr>
-                </thead>
-                <tbody id="productTableBody" class="bg-white divide-y divide-gray-200">
-                    <!-- Example Row: Products will be populated here -->
-                    <tr>
-                        <!-- <th scope="row" class="font-semibold text-dark text-break">${item.productName}</th>
-                        <td class="text-body-secondary">${item.productQty}</td>
-                        <td class="text-body-secondary">${item.productPrice}</td>
-                        <td class="text-body-secondary">${item.productSubtotal}</td> -->
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrp block max-h-96">
+                <table class="w-full">
+                    <table class="w-full divide-y divide-gray-200  text-left ">
+                        <thead class=" text-white uppercase bg-[#B1834A]  sticky top-0 ">
+                            <tr>
+                                <th class="text-base pl-2 py-3 rounded-s-lg">Nombre Producto</th>
+                                <th class="text-base py-3">CNT</th>
+                                <th class="text-base py-3">Precio</th>
+                                <th class="text-base pr-2 py-3 rounded-e-lg">SUBTOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody" class="h-96 bg-white divide-y divide-gray-200 overflow-y-auto">
+                            <!-- Example Row: Products will be populated here -->
+                            <tr>
+                                <th scope="row" class="font-semibold text-dark text-break">${item.productName}</th>
+                                <td class="text-body-secondary">${item.productQty}</td>
+                                <td class="text-body-secondary">${item.productPrice}</td>
+                                <td class="text-body-secondary">${item.productSubtotal}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
 
             <!-- Total Amount -->
-            <div class="mt-auto px-4 py-5 bg-[#B1834A]">
+            <div class="mt-auto px-4 py-6 bg-[#B1834A]">
                 <div class="flex justify-between items-center text-xl">
-                    <h3 class="font-semibold text-xl text-white">TOTAL</h3>
-                    <div class="big-total font-bold text-white"></div>
+                    <div class=" big-total-info text-white">
+
+                    </div>
+                    <div class="big-total font-bold text-white">
+                        <h1 class="text-4xl animate__animated animate__bounce">$${data.bigTotal}</h1>
+
+                    </div>
                 </div>
             </div>
 
         </section>
 
         <!-- Summary Section -->
-        <section class="card shadow-lg rounded-2xl p-5 flex  items-center flex-col bg_img">
-            <div class="thank-you text-lg mt-2"></div>
-
-            <img class="max-w-32" src="{{ url_for('static', path='/img/logo-kiaby.png') }}" alt="" srcset="">
-            <div class="flex flex-row justify-between mt-3">
-                <div class=" h-54 w-52 bg-[#310a31]  p-4 rounded-2xl flex flex-col justify-between items-center ">
-                    <h1 class="text-2xl text-white font-bold">QR Nequi</h1>
-                    <img class="size-40" src="{{ url_for('static', path='/img/QR/nequi.jpeg') }}" alt="" srcset="">
+        <section class="card shadow-lg rounded-2xl p-2 pt-4 flex  items-center flex-col bg_img">
+            <div class="thank-you text-lg mt-1"></div>
+            <img class="max-h-20" src="{{ url_for('static', path='/img/logo-kiaby.png') }}" alt="" srcset="">
+            <div class="flex flex-row justify-between mt-10 gap-4">
+                <div class="  bg-[#310a31]  p-1 rounded-2xl flex flex-col justify-between items-center ">
+                    <h1 class="text-2xl text-white font-bold">QR NEQUI</h1>
+                    <img class="h-56 w-56 rounded-lg object-cover" rounded-lg" src="{{ url_for('static', path='/img/QR/nequi_store.jpg') }}" alt=""
+                        srcset="">
                 </div>
                 <div
-                    class=" w-52 ml-4 bg-[#EC1C26] p-4 rounded-2xl text-white text-center flex flex-col justify-between items-center">
-                    <img class="size-20" src="{{ url_for('static', path='/img/QR/daviplata.png') }}" alt="" srcset="">
-                    <h1 class="text-2xl  font-bold ">Daviplata</h1>
-                    <h1 class="text-xl  font-semibold">321 215 1254</h1>
-                    <h1 class="text-base ">Andres Orjuela</h1>
+                    class="  bg-[#EC1C26] p-1 rounded-2xl flex flex-col justify-between items-center ">
+                    <h1 class="text-2xl text-white font-bold">QR DAVIPLATA</h1>
+                    <img class="h-56 w-56 rounded-lg object-cover"" src="{{ url_for('static', path='/img/QR/daviplata_store.jpg') }}"
+                        alt="" srcset="">
                 </div>
 
             </div>
-            <div class="flex flex-row justify-between mt-3">
-                <div class="w-52 h-54 bg-white  p-4 rounded-2xl text-center mt-4 shadow-lg flex flex-col justify-between items-center ">
-                    <h1 class="text-2xl text-dark font-bold">Metodos de pago</h1>
+            <div class="flex flex-row justify-between mt-20 gap-4">
+                <div
+                    class="h-56 w-56 bg-white  p-4 rounded-2xl text-center  shadow-lg flex flex-col justify-between items-center ">
+                    <h1 class="text-2xl text-dark font-bold">METODOS DE PAGO</h1>
                     <img class="w-36 " src="{{ url_for('static', path='/img/QR/acepted-payments.png') }}" alt=""
                         srcset="">
                 </div>
                 <div
-                    class="ml-4  w-52 h-54 bg-black rounded-2xl text-white text-center flex flex-col justify-between items-center  p-4">
-                    <img class="size-32" src="{{ url_for('static', path='/img/wifi_gratis.png') }}" alt="" srcset="">
+                    class="h-56 w-56 bg-black rounded-2xl text-white text-center flex flex-col justify-between items-center  p-4">
+                    <img class="size-24" src="{{ url_for('static', path='/img/wifi_gratis.png') }}" alt="" srcset="">
                     <h1 class="text-xl  font-bold ">WIFI GRATIS</h1>
                     <h1 class="text-base  font-semibold">Red: Kiaby Clientes</h1>
                 </div>
@@ -118,6 +127,18 @@
     <script src="https://kit.fontawesome.com/cac5544010.js" crossorigin="anonymous"></script>
 
 </body>
+<style>
+    .table-wrp {
+        max-height: 75vh;
+        overflow-y: auto;
+        display: block;
+    }
+
+    thead {
+        position: sticky;
+        top: 0
+    }
+</style>
 
 <script src="{{ url_for('static', path='node_modules/star-rating.js/dist/star-rating.min.js') }}"></script>
 

@@ -63,6 +63,13 @@ manager = ConnectionManager()
 class DatonModel(BaseModel):
     message: str  # List of products
 
+manager = ConnectionManager()
+class CustomerData(BaseModel):
+    telefono: str
+    correo: str
+    nombre: str
+
+
 
 # POST endpoint to receive JSON data and notify connected clients
 @app.post("/data")
@@ -76,6 +83,15 @@ async def receive_data(data: DataModel):
 
 @app.post("/pos/pay")
 async def receive_data(data: DatonModel):
+    global received_data
+    received_data = data
+    # Notify all WebSocket clients
+    await manager.send_data(received_data.dict())
+    return {"message": "Data received successfully!"}
+
+
+@app.post("/pos/customer_data")
+async def receive_data(data: CustomerData):
     global received_data
     received_data = data
     # Notify all WebSocket clients

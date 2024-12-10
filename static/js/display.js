@@ -9,6 +9,9 @@ ws.onmessage = function (event) {
     if (Object.hasOwn(data, "message")) {
         orderPayed(data);
     }
+    if (Object.hasOwn(data, "correo")) {
+        customerData(data);
+    }
     displayProductData(data);
 
 
@@ -32,6 +35,22 @@ function startMessageTimeout() {
         slideshowActive = true;
     }, idleTimeSlideshow);
 }
+
+function customerData(data) {
+    Swal.fire({
+        title: "Valida tus datos",
+        timer: 20000,
+        html: `
+     <div class="text-2xl">
+            <p"><strong>Nombre:</strong> ${data.nombre ? data.nombre : ''}</p>
+            <p><strong>Correo:</strong> ${data.correo}</p>
+            <p><strong>Teléfono:</strong> ${data.telefono ? data.telefono : ''}</p>
+        </div>
+`,
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+    });
+};
 
 
 function orderPayed(message) {
@@ -72,14 +91,17 @@ function orderPayed(message) {
 
 };
 function formatNumber(input) {
-    input = parseFloat(input);
-    return input % 1 == 0 ? input : parseFloat(input).toFixed(1);
+    // input = parseFloat(input);
+    // return input % 1 == 0 ? input : parseFloat(input).toFixed(1);
+    return input
 };
 
 
 function displayProductData(data) {
     const tableBody = document.getElementById('productTableBody');
     const totalElement = document.querySelector('.big-total');
+    const totalElementInfo = document.querySelector('.big-total-info');
+
 
     tableBody.innerHTML = '';
     totalElement.innerHTML = '';
@@ -102,12 +124,13 @@ function displayProductData(data) {
 
         if (data.bigTotal) {
             totalElement.innerHTML = `
-                <h3 class=" text-2xl animate__animated animate__bounce">$${data.bigTotal}</h3>
-                <h4 class=" text-xl animate__animated animate__fadeIn">ITEMS: ${totalItems}</h4>
-
-
+                <h3 class="font-semibold text-xl">TOTAL:</h3>
+                <h1 class="text-4xl animate__animated animate__bounce">$${data.bigTotal}</h1>
 
             `;
+            totalElementInfo.innerHTML=`
+                <h3 class="font-semibold text-xl animate__animated animate__fadeIn">PRODUCTOS: ${totalItems}</h3>
+`
         }
     });
 }
